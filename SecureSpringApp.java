@@ -1,13 +1,4 @@
-/*
- * Java Spring Security Application - Lab 14
- * Features Implemented:
- * - Database Migration using Flyway
- * - User Authentication & Authorization with Spring Security
- * - Secure Password Management
- * - Input Validation & Access Control
- */
 
-// Main Application
 @SpringBootApplication
 public class SecureSpringApp {
     public static void main(String[] args) {
@@ -15,7 +6,7 @@ public class SecureSpringApp {
     }
 }
 
-// Entity for User
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -33,12 +24,12 @@ public class User {
     private Role role;
 }
 
-// Enum for Roles
+
 public enum Role {
     ROLE_USER, ROLE_ADMIN
 }
 
-// Entity for Data Storage (e.g., Books)
+
 @Entity
 @Table(name = "books")
 public class Book {
@@ -57,19 +48,19 @@ public class Book {
     private User user;
 }
 
-// User Repository
+
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByUsername(String username);
 }
 
-// Book Repository
+
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
     List<Book> findByUser(User user);
 }
 
-// Service for User Authentication
+
 @Service
 public class UserService {
     private final UserRepository userRepository;
@@ -87,7 +78,7 @@ public class UserService {
     }
 }
 
-// Security Configuration
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
